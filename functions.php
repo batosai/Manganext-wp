@@ -1,7 +1,5 @@
 <?php
 
-add_theme_support('post-thumbnails');
-
 remove_action('do_feed_rdf', 'do_feed_rdf', 10, 1);
 remove_action('do_feed_rss', 'do_feed_rss', 10, 1);
 remove_action('do_feed_rss2', 'do_feed_rss2', 10, 1);
@@ -21,6 +19,18 @@ add_action('admin_menu'                 , 'removeEditorMenu');
 add_action('wp_before_admin_bar_render' , 'adminBarRender');
 add_action('admin_menu'                 , 'menuPages');
 add_action('init'                       , 'block_administration');
+add_action('after_setup_theme'          , 'wp_rpt_activation_hook');
+
+
+function wp_rpt_activation_hook() {
+    if ( function_exists('add_theme_support') ) {
+        add_theme_support('post-thumbnails');
+
+        add_image_size('thumbnail-450x625', 450, 625, true);
+        add_image_size('thumbnail-215x300', 215, 300, true);
+    }
+}
+
 
 function block_administration()
 {
