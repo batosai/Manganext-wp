@@ -18,7 +18,7 @@ gulp.task('deploy-prod', [], function(){
         emptyDirectories: true,
         incremental: true,
         progress: true,
-        exclude: ['.DS_Store', '.git', '.gitignore', '.gitkeep', 'gulpfile.js', 'package.json', 'node_modules']
+        exclude: ['.DS_Store', '.git', '.gitignore', '.gitkeep', '.editorconfig', 'gulpfile.js', 'package.json', 'node_modules']
     }));
 
     return gulp.src('./')
@@ -31,6 +31,6 @@ gulp.task('deploy-prod', [], function(){
         emptyDirectories: true,
         incremental: true,
         progress: true,
-        exclude: ['.DS_Store', '.git', '.gitignore', '.gitkeep', 'gulpfile.js', 'package.json', 'node_modules']
+        exclude: ['.DS_Store', '.git', '.gitignore', '.gitkeep', '.editorconfig', 'gulpfile.js', 'package.json', 'node_modules']
     }));
 });
