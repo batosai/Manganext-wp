@@ -142,6 +142,11 @@ function registerMetaBoxes($meta_boxes)
                 'type' => 'date'
             ),
             array(
+                'name' => 'Date de 1ere publication',
+                'id'   => $prefixe . "first_publication_at",
+                'type' => 'date'
+            ),
+            array(
                 'name' => 'Illustration',
                 'id'   => $prefixe . "illustration",
                 'type' => 'text'
