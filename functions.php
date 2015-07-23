@@ -180,6 +180,11 @@ function registerMetaBoxes($meta_boxes)
                 'name' => 'Image',
                 'id'   => $prefixe . "image",
                 'type' => 'text'
+            ),
+            array(
+                'name' => 'Exclure',
+                'id'   => $prefixe . "exclude",
+                'type' => 'checkbox'
             )
         )
     );
