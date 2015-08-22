@@ -7,24 +7,10 @@ var rsync      = require('gulp-rsync');
 
 
 gulp.task('deploy-prod', [], function(){
-
-    gulp.src('../../plugins/thermal-api')
-      .pipe(rsync({
-        root: '../../plugins/thermal-api',
-        hostname: 'server.chaufourier.fr',
-        username: 'peter',
-        destination: '/home/peter/sites/admin.manganext/wp-content/plugins/thermal-api',
-        recursive: true,
-        emptyDirectories: true,
-        incremental: true,
-        progress: true,
-        exclude: ['.DS_Store', '.git', '.gitignore', '.gitkeep', '.editorconfig', 'gulpfile.js', 'package.json', 'node_modules']
-    }));
-
     return gulp.src('./')
       .pipe(rsync({
         root: './',
-        hostname: 'server.chaufourier.fr',
+        hostname: 'api.manganext-app.com',
         username: 'peter',
         destination: '/home/peter/sites/admin.manganext/wp-content/themes/manganext',
         recursive: true,

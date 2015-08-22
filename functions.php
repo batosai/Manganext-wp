@@ -184,6 +184,16 @@ function registerMetaBoxes($meta_boxes)
                 'type' => 'text'
             ),
             array(
+                'name' => 'Limite d\'age',
+                'id'   => $prefixe . "age_number",
+                'type' => 'text'
+            ),
+            array(
+                'name' => 'Nombre de tomes',
+                'id'   => $prefixe . "outputs_number",
+                'type' => 'textarea'
+            ),
+            array(
                 'name' => 'Exclure',
                 'id'   => $prefixe . "exclude",
                 'type' => 'checkbox'

@@ -296,6 +296,8 @@ class Posts {
             'volume'               => $post->MN_volume,
             'editor'               => $post->MN_editor,
             'price'                => $post->MN_price,
+            'outputs_number'       => $post->MN_outputs_number,
+            'age_number'           => $post->MN_age_number,
             'publication_at'       => $post->MN_publication_at,
             'first_publication_at' => $post->MN_first_publication_at,
         );
@@ -419,6 +421,8 @@ class Posts {
             unset($data['mime_type']);
             unset($data['meta']);
             unset($data['taxonomies']);
+            unset($data['age_number']);
+            unset($data['outputs_number']);
         }
 
         $data = apply_filters_ref_array( 'thermal_post_entity', array( ( object ) $data, &$post, $state ) );
@@ -841,7 +845,8 @@ class Posts {
             if($data->price_code)             self::_meta($post_id, 'MN_price_code', $data->price_code);
             if($data->price)                  self::_meta($post_id, 'MN_price', $data->price);
             if($data->source_url)             self::_meta($post_id, 'MN_source_url', $data->source_url);
-            if($data->image)                  self::_meta($post_id, 'MN_image', $data->image);
+            if($data->age_number)             self::_meta($post_id, 'MN_age_number', $data->age_number);
+            if($data->outputs_number)         self::_meta($post_id, 'MN_outputs_number', $data->outputs_number);
             self::_meta($post_id, 'MN_exclude', 0);
 
             if($data->image && !get_the_post_thumbnail($post_id))
@@ -900,3 +905,4 @@ class Posts {
 }
 
 ?>
+
