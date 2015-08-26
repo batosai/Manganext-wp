@@ -300,6 +300,8 @@ class Posts {
             'age_number'           => $post->MN_age_number,
             'publication_at'       => $post->MN_publication_at,
             'first_publication_at' => $post->MN_first_publication_at,
+            'age_number'           => $post->MN_age_number,
+            'outputs_number'       => $post->MN_outputs_number,
         );
 
             // if($data->volume)           self::_meta($post_id, 'MN_volume', $data->volume);
@@ -861,7 +863,7 @@ class Posts {
     }
 
     protected static function _meta($id, $name, $data) {
-        if ($data && !update_post_meta($id, $name, $data))
+        if (($data || $data == 0) && !update_post_meta($id, $name, $data))
             add_post_meta($id, $name, $data);
     }
 
@@ -905,4 +907,3 @@ class Posts {
 }
 
 ?>
-
