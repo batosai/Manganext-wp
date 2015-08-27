@@ -840,7 +840,7 @@ class Posts {
             if($data->vo_editor)              self::_meta($post_id, 'MN_vo_editor', $data->vo_editor);
             if($data->preprint)               self::_meta($post_id, 'MN_preprint', $data->preprint);
             if($data->publication_at)         self::_meta($post_id, 'MN_publication_at', $data->publication_at);
-            if($data->first_publication_at)   self::_meta($post_id, 'MN_first_publication_at', $data->publication_at);
+            if($data->first_publication_at)   self::_meta($post_id, 'MN_first_publication_at', $data->first_publication_at);
             if($data->illustration)           self::_meta($post_id, 'MN_illustration', $data->illustration);
             if($data->origin)                 self::_meta($post_id, 'MN_origin', $data->origin);
             if($data->ean)                    self::_meta($post_id, 'MN_ean', $data->ean);
