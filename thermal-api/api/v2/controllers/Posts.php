@@ -423,7 +423,7 @@ class Posts {
             unset($data['mime_type']);
             unset($data['meta']);
             unset($data['taxonomies']);
-            unset($data['age_number']);
+            // unset($data['age_number']);
             unset($data['outputs_number']);
         }
 
