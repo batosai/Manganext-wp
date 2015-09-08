@@ -40,6 +40,7 @@ class API_Dispatcher {
 		if ( false !== strpos( $_SERVER['REQUEST_URI'], get_api_base() ) ) {
 			require_once( 'api/v1/API.php' );
 			require_once( 'api/v2/API.php' );
+			require_once( 'api/v21/API.php' );
 
 			add_action( 'wp_loaded', array( $this, 'dispatch_api' ) );
 		}
@@ -55,6 +56,7 @@ class API_Dispatcher {
 
 		new \Voce\Thermal\v1\API( $app );
 		new \Voce\Thermal\v2\API( $app );
+		new \Voce\Thermal\v21\API( $app );
 
 		$app->run();
 
