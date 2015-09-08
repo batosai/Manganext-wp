@@ -12,7 +12,7 @@ gulp.task('deploy-prod', [], function(){
         root: './',
         hostname: 'api.manganext-app.com',
         username: 'peter',
-        destination: '/home/peter/sites/admin.manganext/wp-content/themes/manganext',
+        destination: '/home/peter/sites/api.manganext/wp-content/themes/manganext',
         recursive: true,
         emptyDirectories: true,
         incremental: true,
