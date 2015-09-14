@@ -300,7 +300,6 @@ class Posts {
                 'modified' => get_post_modified_time( 'c', true, $post ),
                 'comment_count' => ( int ) $post->comment_count,
                 'content_display' => apply_filters( 'the_content', $content_display ),
-                'taxonomies' => ( object ) $post_taxonomies,
                 'media' => array_values( $media )
                 ) );
         }

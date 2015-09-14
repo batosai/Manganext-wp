@@ -56,37 +56,37 @@ class Posts {
         $wp_all_posts = new \WP_Query( $args_length );
         $length = count($wp_all_posts->posts);
 
-        if(isset($args['s']) && !$length)
-        {
-            $args['meta_query'] = array(
-                'relation' => 'OR',
-                array(
-                    'key' => 'MN_author',
-                    'value' => $args['s'],
-                    'compare' => 'LIKE'
-                ),
-                array(
-                    'key' => 'MN_type',
-                    'value' => $args['s'],
-                    'compare' => 'LIKE'
-                ),
-                array(
-                    'key' => 'MN_editor',
-                    'value' => $args['s'],
-                    'compare' => 'LIKE'
-                ),
-                $exclude
-            );
-
-            unset($args['s']);
-
-            $wp_posts = new \WP_Query( $args );
-
-            $args_length = $args;
-            unset($args_length['posts_per_page'], $args_length['offset']);
-            $wp_all_posts = new \WP_Query( $args_length );
-            $length = count($wp_all_posts->posts);
-        }
+        // if(isset($args['s']) && !$length)
+        // {
+        //     $args['meta_query'] = array(
+        //         'relation' => 'OR',
+        //         array(
+        //             'key' => 'MN_author',
+        //             'value' => $args['s'],
+        //             'compare' => 'LIKE'
+        //         ),
+        //         array(
+        //             'key' => 'MN_type',
+        //             'value' => $args['s'],
+        //             'compare' => 'LIKE'
+        //         ),
+        //         array(
+        //             'key' => 'MN_editor',
+        //             'value' => $args['s'],
+        //             'compare' => 'LIKE'
+        //         ),
+        //         $exclude
+        //     );
+        //
+        //     unset($args['s']);
+        //
+        //     $wp_posts = new \WP_Query( $args );
+        //
+        //     $args_length = $args;
+        //     unset($args_length['posts_per_page'], $args_length['offset']);
+        //     $wp_all_posts = new \WP_Query( $args_length );
+        //     $length = count($wp_all_posts->posts);
+        // }
 
         if ( $wp_posts->have_posts() ) {
             return $wp_posts->posts;
