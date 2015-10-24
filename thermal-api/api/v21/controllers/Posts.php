@@ -28,6 +28,44 @@ class Posts {
 
         $filemane = $dir . '/' . md5($_SERVER['REQUEST_URI']);
 
+        if(wpmd_is_android()) {
+        // if(wpmd_is_notphone()) {
+          return array(
+            'posts' => array(array(
+              "volume"               => "Vol.1",
+              "content"              => "Mon contenu",
+              "editor"               => "Manganext",
+              "id"                   => 1,
+              "price"                => "6.99 €",
+              "title"                => "Manganext book",
+              "publication_at"       => "2015-08-05T00:00:00+02:00",
+              "first_publication_at" => "2015-08-05T00:00:00+02:00",
+              "age_number"           => "12+",
+              "name"                 => "manga-next",
+              "media"                => array(array(
+                  "sizes"=> array(
+                    array(
+                      "width"=> 450,
+                      "name"=> "thumbnail-450x625",
+                      "url"=> "http://placehold.it/450x625",
+                      "height"=> 625
+                    ),
+                    array(
+                      "width"=> 215,
+                      "name"=> "thumbnail-215x300",
+                      "url"=> "http://placehold.it/215x300",
+                      "height"=> 300
+                    )
+                  )),
+                  "id"        => 9927,
+                  "alt_text"  => "",
+                  "mime_type" => "image/jpeg"
+              ),
+            )),
+          "length"=> 1
+          );
+        }
+
         if(file_exists($filemane)) {
           return json_decode(file_get_contents($filemane));
         }
@@ -350,28 +388,45 @@ class Posts {
 
         if ( isset( $meta['sizes'] ) and is_array( $meta['sizes'] ) ) {
             $upload_dir = wp_upload_dir();
+            $sizes = array();
 
-            // $sizes = array(
-            //     array(
-            //         'height' => $meta['height'],
-            //         'name' => 'full',
-            //         'url' => $src[0],
-            //         'width' => $meta['width'],
-            //     ),
-            // );
+            $full = array(
+                // array(
+                //     'height' => $meta['height'],
+                //     'name' => 'full',
+                //     'url' => $src[0],
+                //     'width' => $meta['width'],
+                // ),
+                array(
+                    'height' => $meta['height'],
+                    'name' => 'thumbnail-215x300',
+                    'url' => $src[0],
+                    'width' => $meta['width'],
+                ),
+                array(
+                    'height' => $meta['height'],
+                    'name' => 'thumbnail-450x625',
+                    'url' => $src[0],
+                    'width' => $meta['width'],
+                ),
+            );
 
             foreach ( $meta['sizes'] as $size => $data ) {
                 $src = wp_get_attachment_image_src( $post->ID, $size );
 
                 if(in_array($size, array('thumbnail-215x300', 'thumbnail-450x625')))
-                $sizes[] = array(
-                    'height' => $data['height'],
-                    'name' => $size,
-                    'url' => $src[0],
-                    'width' => $data['width'],
-                );
+                {
+                  $sizes[] = array(
+                      'height' => $data['height'],
+                      'name' => $size,
+                      'url' => $src[0],
+                      'width' => $data['width'],
+                  );
+                }
             }
         }
+
+        if(!count($sizes)) $sizes = $full;
 
         return array(
             'id' => $post->ID,
