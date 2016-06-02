@@ -28,43 +28,43 @@ class Posts {
 
         $filemane = $dir . '/' . md5($_SERVER['REQUEST_URI']);
 
-        if(wpmd_is_android()) {
-        // if(wpmd_is_notphone()) {
-          return array(
-            'posts' => array(array(
-              "volume"               => "Vol.1",
-              "content"              => "Mon contenu",
-              "editor"               => "Manganext",
-              "id"                   => 1,
-              "price"                => "6.99 €",
-              "title"                => "Manganext book",
-              "publication_at"       => "2015-08-05T00:00:00+02:00",
-              "first_publication_at" => "2015-08-05T00:00:00+02:00",
-              "age_number"           => "12+",
-              "name"                 => "manga-next",
-              "media"                => array(array(
-                  "sizes"=> array(
-                    array(
-                      "width"=> 450,
-                      "name"=> "thumbnail-450x625",
-                      "url"=> "http://placehold.it/450x625",
-                      "height"=> 625
-                    ),
-                    array(
-                      "width"=> 215,
-                      "name"=> "thumbnail-215x300",
-                      "url"=> "http://placehold.it/215x300",
-                      "height"=> 300
-                    )
-                  )),
-                  "id"        => 9927,
-                  "alt_text"  => "",
-                  "mime_type" => "image/jpeg"
-              ),
-            )),
-          "length"=> 1
-          );
-        }
+        // if(wpmd_is_android()) {
+        // // if(wpmd_is_notphone()) {
+        //   return array(
+        //     'posts' => array(array(
+        //       "volume"               => "Vol.1",
+        //       "content"              => "Mon contenu",
+        //       "editor"               => "Manganext",
+        //       "id"                   => 1,
+        //       "price"                => "6.99 €",
+        //       "title"                => "Manganext book",
+        //       "publication_at"       => "2015-08-05T00:00:00+02:00",
+        //       "first_publication_at" => "2015-08-05T00:00:00+02:00",
+        //       "age_number"           => "12+",
+        //       "name"                 => "manga-next",
+        //       "media"                => array(array(
+        //           "sizes"=> array(
+        //             array(
+        //               "width"=> 450,
+        //               "name"=> "thumbnail-450x625",
+        //               "url"=> "http://placehold.it/450x625",
+        //               "height"=> 625
+        //             ),
+        //             array(
+        //               "width"=> 215,
+        //               "name"=> "thumbnail-215x300",
+        //               "url"=> "http://placehold.it/215x300",
+        //               "height"=> 300
+        //             )
+        //           )),
+        //           "id"        => 9927,
+        //           "alt_text"  => "",
+        //           "mime_type" => "image/jpeg"
+        //       ),
+        //     )),
+        //   "length"=> 1
+        //   );
+        // }
 
         if(file_exists($filemane)) {
           return json_decode(file_get_contents($filemane));
@@ -553,8 +553,8 @@ class Posts {
     }
 
     protected static function _meta($id, $name, $data) {
-        if (($data || $data == 0) && !update_post_meta($id, $name, $data))
-            add_post_meta($id, $name, $data);
+        if ($data || $data == 0)
+          update_post_meta($id, $name, $data);
     }
 
     protected static function _uploadfile($post_id, $file)

@@ -1,6 +1,6 @@
 <?php
 
-// global $wpdb;
+global $wpdb;
 
 
 // $title = addslashes(htmlspecialchars("Hibi Chouchou - Edelweiss & Papillons"));
@@ -19,3 +19,27 @@
 
 // var_dump( $id );
 // var_dump(get_post($id));
+
+
+// Doublon
+
+// $sql   = "SELECT ID FROM mn_posts WHERE 1";
+// $posts = $wpdb->get_results($sql);
+//
+// foreach ($posts as $post) {
+//   $m     = array();
+//   $ids   = array();
+//   $meta = $wpdb->get_results("SELECT * FROM mn_postmeta WHERE post_id=" . $post->ID);
+//
+//   foreach ($meta as $me) {
+//     if(!in_array($me->meta_key, $m)) {
+//       $m[] = $me->meta_key;
+//     }
+//     else {
+//       $ids[] = $me->meta_id;
+//     }
+//   }
+//
+//   if(count($ids))
+//     $wpdb->get_results("DELETE FROM mn_postmeta WHERE meta_id IN (" . implode(',', $ids) . ")");
+// }
